@@ -6,6 +6,7 @@ import "../styles/main.scss"
 import image from "@assets/images/profile-photo.jpg"
 
 const t = await useTranslations(Astro.currentLocale)
+const repoUrl = t("meta.repoUrl")
 ---
 <!doctype html>
 <html lang="en">
@@ -35,5 +36,21 @@ const t = await useTranslations(Astro.currentLocale)
   </head>
   <body>
     <slot />
+    <footer>
+      <p>
+        <span set:html={t("sections.footer.copyrightText", {
+          author: t("meta.author"),
+          year: new Date().getFullYear(),
+        })} />
+        <span set:html={t("sections.footer.sourceCodeText", {
+          link: `<a href=${repoUrl} class="secondary" target="_blank" rel="noopener noreferrer">GitHub</a>`,
+        })} />
+      </p>
+      <p>
+        <small>
+          {t("sections.footer.trademarkText")}
+        </small>
+      </p>
+    </footer>
   </body>
 </html>

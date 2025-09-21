@@ -8,10 +8,16 @@
     "description": "Full-stack software engineer with 20+ years of experience in frontend and backend development.",
     "email": "hello@ignat.dev",
     "keywords": "full-stack, software engineer, frontend, backend, developer, architecture, react, vue.js, angular, typescript, javascript, node.js, c#, asp.net, python, java, scss, rest api, cloud, devops",
+    "repoUrl": "https://github.com/ignat-dev/ignat.dev",
     "title": "ignat.dev",
     "url": "https://ignat.dev"
   },
   "sections": {
+    "footer": {
+      "copyrightText": "&copy; {{year}} {{author}}. All rights reserved.",
+      "sourceCodeText": "Source code available on {{link}}.",
+      "trademarkText": "All copyright and trademark rights are the property of their respective owners."
+    },
     "hero": {
       "description": "With 20+ years of experience in frontend and backend development, I create user-friendly and scalable solutions.",
       "subtitle": "Full-Stack Software Engineer",
