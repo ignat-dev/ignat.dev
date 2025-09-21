@@ -1,0 +1,39 @@
+---
+import { useTranslations } from "../lib/i18n"
+
+import "../styles/main.scss"
+
+import image from "@assets/images/profile-photo.jpg"
+
+const t = await useTranslations(Astro.currentLocale)
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content={t("meta.author")} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={t("meta.description")} />
+    <meta name="keywords" content={t("meta.keywords")} />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={t("meta.title")} />
+    <meta property="og:description" content={t("meta.description")} />
+    <meta property="og:image" content={image.src} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={t("meta.url")} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={t("meta.title")} />
+    <meta name="twitter:description" content={t("meta.description")} />
+    <meta name="twitter:image" content={image.src} />
+    <title>{t("meta.title")}</title>
+    <link rel="canonical" href={t("meta.url")} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300..700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

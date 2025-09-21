@@ -1,0 +1,21 @@
+{
+  "actions": {
+    "downloadCV": "Download CV",
+    "getInTouch": "Get in touch"
+  },
+  "meta": {
+    "author": "Ignat Ignatov",
+    "description": "Full-stack software engineer with 20+ years of experience in frontend and backend development.",
+    "email": "hello@ignat.dev",
+    "keywords": "full-stack, software engineer, frontend, backend, developer, architecture, react, vue.js, angular, typescript, javascript, node.js, c#, asp.net, python, java, scss, rest api, cloud, devops",
+    "title": "ignat.dev",
+    "url": "https://ignat.dev"
+  },
+  "sections": {
+    "hero": {
+      "description": "With 20+ years of experience in frontend and backend development, I create user-friendly and scalable solutions.",
+      "subtitle": "Full-Stack Software Engineer",
+      "title": "Ignat Ignatov"
+    }
+  }
+}
