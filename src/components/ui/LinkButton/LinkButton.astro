@@ -1,0 +1,37 @@
+---
+import type { LinkData } from "@types"
+import { getObfuscatedString } from "@utils/text"
+
+import "./LinkButton.scss"
+
+interface Props extends LinkData {
+  className?: string
+  downloadAs?: string
+  isInternal?: boolean
+}
+
+const { className, downloadAs, icon, isInternal, link, text } = Astro.props
+const isProtected = link.startsWith("mailto:") || link.startsWith("/files/")
+const data = isProtected ? getObfuscatedString(link) : undefined
+const href = isProtected ? `#${text?.toLowerCase().replace(/\s+/g, "-") ?? ""}` : link
+---
+
+<a
+  class:list={[ "ui-link-button", className ]}
+  data-href={data}
+  download={downloadAs}
+  href={href}
+  is="link-button"
+  rel={isInternal ? undefined : "nofollow noopener"}
+  role="button"
+  target={isInternal ? undefined : "_blank"}
+>
+  {icon && <i style={`--link-icon: url(${icon})`} />}
+  {text && <span>{text}</span>}
+</a>
+
+<script>
+  import { LinkButton } from "./LinkButton.ts"
+
+  customElements.define("link-button", LinkButton, { extends: "a" })
+</script>

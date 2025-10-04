@@ -1,0 +1,21 @@
+---
+import type { LinkData } from "@types"
+import LinkButton from "../LinkButton/LinkButton.astro"
+
+import "./LinkList.scss"
+
+interface Props {
+  className?: string
+  items: Array<LinkData>
+}
+
+const { className, items } = Astro.props
+---
+
+<ul class:list={[ "ui-link-list", className ]}>
+  {items.map((props) => (
+    <li>
+      <LinkButton {...props} className="contrast outline" />
+    </li>
+  ))}
+</ul>

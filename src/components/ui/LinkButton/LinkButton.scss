@@ -1,0 +1,15 @@
+.ui-link-button {
+  align-items: center;
+  display: flex !important;
+  gap: calc(0.75 * var(--pico-spacing));
+  line-height: 1;
+
+  > i {
+    background-color: currentColor;
+    display: inline-block;
+    flex: 0 0 auto;
+    height: 1.5em;
+    mask: var(--link-icon) no-repeat center/contain;
+    width: 1.5em;
+  }
+}

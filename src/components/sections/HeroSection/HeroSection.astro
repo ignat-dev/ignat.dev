@@ -1,19 +1,13 @@
 ---
+import { LinkButton } from "@components/ui"
 import { useTranslations } from "@lib/i18n"
 
 import "./HeroSection.scss"
 
 import photo from "@assets/images/profile-photo.jpg"
 
-// Basic obfuscation to protect the email and the CV link from scraping.
-function obfuscate(value: string): string {
-  return btoa(value.split("").reverse().join(""))
-}
-
 const t = await useTranslations(Astro.currentLocale)
-const contactLink = obfuscate(`mailto:${t("meta.email")}`)
-const downloadLink = obfuscate("/files/cv.pdf")
-const downloadName = `CV - ${t("sections.hero.title")} - ${t("sections.hero.subtitle")}.pdf`
+const cvFileName = `CV - ${t("sections.hero.title")} - ${t("sections.hero.subtitle")}.pdf`
 ---
 
 <section class="hero-section">
@@ -28,28 +22,18 @@ const downloadName = `CV - ${t("sections.hero.title")} - ${t("sections.hero.subt
       </hgroup>
       <p>{t("sections.hero.description")}</p>
       <div class="hero-section__actions">
-        <a href="#get-in-touch" class="primary" data-link={contactLink} role="button">
-          {t("actions.getInTouch")}
-        </a>
-        <a href="#download-cv" class="contrast outline" data-link={downloadLink} download={downloadName} role="button">
-          {t("actions.downloadCV")}
-        </a>
+        <LinkButton
+          className="primary"
+          link={`mailto:${t("meta.email")}`}
+          text={t("actions.getInTouch")}
+        />
+        <LinkButton
+          className="contrast outline"
+          downloadAs={cvFileName}
+          link={"/files/cv.pdf"}
+          text={t("actions.downloadCV")}
+        />
       </div>
     </div>
   </div>
 </section>
-
-<script type="text/javascript" is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("[data-link]").forEach((el) => {
-      el.addEventListener("click", (event) => {
-        if (event.target?.getAttribute("href")?.startsWith("#")) {
-          const data = el.getAttribute("data-link");
-          const link = atob(data).split("").reverse().join("");
-          event.target.setAttribute("href", link);
-          event.target.removeEventListener("click", this);
-        }
-      });
-    });
-  });
-</script>
