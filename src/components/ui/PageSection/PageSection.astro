@@ -1,0 +1,35 @@
+---
+import "./PageSection.scss"
+
+interface Props {
+  align?: "left" | "center" | "right"
+  className?: string
+  maxWidth?: string
+  title: string
+  text?: string
+  theme?: "light" | "dark"
+}
+
+const { align = "center", className, maxWidth, title, text, theme } = Astro.props
+const contentAlign = { left: "start", center: "center", right: "end" }[align]
+---
+
+<section
+  class:list={[ "ui-page-section", className ]}
+  data-align={align}
+  data-theme={theme}
+  style={{
+    "--content-align": contentAlign,
+    "--max-width": maxWidth ?? undefined,
+  }}
+>
+  <div class="ui-page-section__header">
+    <hgroup>
+      <h2>{title}</h2>
+      {Astro.slots.text ? <slot name="text" /> : (text && <p>{text}</p>)}
+    </hgroup>
+  </div>
+  <div class="ui-page-section__content">
+    <slot />
+  </div>
+</section>

@@ -1,0 +1,71 @@
+.ui-page-section {
+  align-items: var(--content-align, center);
+  display: flex;
+  flex-direction: column;
+  gap: calc(4 * var(--pico-spacing));
+  padding: 10%;
+  text-align: var(--content-align, center);
+
+  &[data-align="left"] {
+    --underline-margin-left: 0;
+    --underline-margin-right: auto;
+  }
+
+  &[data-align="right"] {
+    --underline-margin-left: auto;
+    --underline-margin-right: 0;
+  }
+
+  > .ui-page-section__header,
+  > .ui-page-section__content {
+    max-width: var(--max-width, none);
+    width: 100%;
+  }
+
+  > .ui-page-section__header {
+    > hgroup {
+      margin: 0;
+
+      > h2 {
+        font-size: 2.75rem;
+        font-weight: 500;
+        line-height: 1;
+
+        &::after {
+          background-color: var(--pico-primary-background);
+          border-radius: 2px;
+          content: "";
+          display: block;
+          height: 4px;
+          margin: calc(2 * var(--pico-block-spacing-vertical, 1rem)) auto;
+          margin-left: var(--underline-margin-left, auto);
+          margin-right: var(--underline-margin-right, auto);
+          width: 100px;
+        }
+      }
+
+      > p {
+        color: var(--pico-secondary);
+        font-size: 1.125rem !important;
+        hyphens: none;
+        line-height: 1.5;
+        margin: var(--pico-block-spacing-vertical) auto 0 auto;
+        word-break: keep-all;
+      }
+
+      > :last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  @media (min-width: 960px) {
+    padding: calc(6 * var(--pico-spacing));
+  }
+
+  @media (max-width: 600px) {
+    > .ui-page-section__header > hgroup > h2 {
+      font-size: 2rem;
+    }
+  }
+}
