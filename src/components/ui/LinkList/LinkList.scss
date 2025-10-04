@@ -1,10 +1,12 @@
 .ui-link-list {
   --item-width: 100%;
+  --list-flow: row;
   --list-width: fit-content;
 
   align-items: stretch;
   display: grid;
   gap: var(--pico-block-spacing-vertical) var(--pico-block-spacing-horizontal);
+  grid-auto-flow: var(--list-flow);
   grid-template-columns: repeat(auto-fill, minmax(var(--item-width), 1fr));
   justify-content: stretch;
   margin: 0;

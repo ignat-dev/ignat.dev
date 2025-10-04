@@ -13,6 +13,10 @@
     "url": "https://ignat.dev"
   },
   "sections": {
+    "contact": {
+      "text": "Feel free to reach out for collaborations, inquiries, or just to say hello!",
+      "title": "Get in Touch"
+    },
     "footer": {
       "copyrightText": "&copy; {{year}} {{author}}. All rights reserved.",
       "sourceCodeText": "Source code available on {{link}}.",

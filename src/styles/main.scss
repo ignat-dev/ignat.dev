@@ -84,6 +84,7 @@ section {
 }
 
 footer {
+  border-top: 1px solid var(--pico-muted-border-color);
   font-size: 0.875rem;
   margin: 0 auto;
   padding: calc(4 * var(--pico-block-spacing-vertical)) calc(2 * var(--pico-block-spacing-horizontal)) !important;

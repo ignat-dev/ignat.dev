@@ -1,0 +1,57 @@
+.contact-section {
+  overflow: hidden;
+  position: relative;
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &::after {
+    background-color: var(--pico-primary-background);
+    bottom: 0;
+    color: var(--pico-primary-background);
+    content: "";
+    height: 100%;
+    mask: url("/icons/chat-messages.svg") no-repeat center/contain;
+    max-height: 400px;
+    opacity: 0.2;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%;
+    z-index: 0;
+
+    @media (max-width: 800px) {
+      height: 75%;
+      max-height: none;
+      top: 0;
+      transform: none;
+    }
+
+    @media (max-width: 600px) {
+      height: 50%;
+      top: 1em;
+    }
+  }
+
+  .contact-links {
+    --item-width: 180px;
+    --list-flow: column;
+
+    @media (max-width: 820px) {
+      --list-width: 100%;
+    }
+
+    @media (max-width: 720px) {
+      --list-flow: row;
+      --list-width: 240px;
+    }
+
+    @media (max-width: 400px) {
+      --item-width: 100%;
+      --list-width: 100%;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+---
+import { LinkList, PageSection } from "@components/ui"
+import { contacts } from "@config/contacts"
+import { useTranslations } from "@lib/i18n"
+
+import "./ContactSection.scss"
+
+const t = await useTranslations(Astro.currentLocale)
+---
+
+<PageSection
+  align="left"
+  className="contact-section"
+  text={t("sections.contact.text")}
+  title={t("sections.contact.title")}
+>
+  <LinkList className="contact-links" items={contacts} />
+</PageSection>
