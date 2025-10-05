@@ -4,7 +4,6 @@
 
   display: flex;
   min-height: min(100vh, 800px);
-  overflow: hidden;
   padding: var(--padding-vertical) var(--padding-horizontal);
   position: relative;
 
@@ -35,8 +34,9 @@
       width: min(35%, 320px);
 
       > img {
+        background-color: var(--pico-primary-inverse);
         border-radius: 50%;
-        box-shadow: 0 0 0 4px #fff;
+        box-shadow: 0 0 0 4px var(--pico-primary-inverse);
         height: max-content;
         position: relative;
         width: 100%;
@@ -80,16 +80,7 @@
 
   @media (prefers-color-scheme: light) {
     &::before {
-      background: linear-gradient(
-        35deg,
-        #7540bf 0%,
-        #7540bf 5%,
-        var(--pico-background-color) 75%,
-        var(--pico-background-color) 100%);
-      filter: none;
-      height: 100%;
-      transform: none;
-      width: 100%;
+      opacity: 0.75;
     }
   }
 
