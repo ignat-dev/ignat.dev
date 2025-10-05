@@ -38,7 +38,7 @@
   background: var(--pico-contrast-inverse);
   border-radius: 2rem;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 3fr;
+  grid-template-columns: 1fr 3fr;
   justify-content: space-between;
   justify-items: center;
   padding: calc(4 * var(--pico-spacing));
@@ -48,17 +48,19 @@
   > p {
     align-self: stretch;
     color: var(--pico-muted-color);
+    font-size: calc(0.75 * var(--pico-font-size));
     justify-self: stretch;
     margin: 0;
     overflow-wrap: normal;
-    padding-right: calc(4 * var(--pico-block-spacing-horizontal));
+    padding-right: calc(2 * var(--pico-block-spacing-horizontal));
     text-align: start;
     text-overflow: ellipsis;
+    word-break: keep-all;
   }
 
   > ul {
     align-items: center;
-    column-gap: calc(4 * var(--pico-block-spacing-horizontal));
+    column-gap: calc(2 * var(--pico-block-spacing-horizontal));
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-content: space-between;
@@ -93,11 +95,12 @@
     }
   }
 
-  @media (max-width: 780px) {
+  @media (max-width: 800px) {
     grid-template-columns: 1fr;
     row-gap: calc(1.5 * var(--pico-block-spacing-vertical));
 
     > p {
+      font-size: calc(0.825 * var(--pico-font-size));
       padding: 0;
       text-align: center;
 
@@ -109,7 +112,12 @@
 
     > ul {
       border: 0 !important;
+      column-gap: calc(4 * var(--pico-block-spacing-horizontal));
       padding: 0 !important;
+
+      > li > a > div > svg {
+        max-height: 2rem;
+      }
     }
   }
 
