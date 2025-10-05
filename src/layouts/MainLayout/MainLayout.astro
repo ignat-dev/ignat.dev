@@ -1,12 +1,20 @@
 ---
-import { useTranslations } from "../lib/i18n"
+import { useTranslations } from "@lib/i18n"
 
-import "../styles/main.scss"
+import "@styles/main.scss"
+import "./MainLayout.scss"
 
 import image from "@assets/images/profile-photo.jpg"
 
+interface Props {
+  className?: string
+  title?: string
+}
+
+const { className, title: pageTitle } = Astro.props
 const t = await useTranslations(Astro.currentLocale)
 const repoUrl = t("meta.repoUrl")
+const title = pageTitle ? `${pageTitle} - ${t("meta.title")}` : t("meta.title")
 ---
 <!doctype html>
 <html lang="en">
@@ -18,16 +26,16 @@ const repoUrl = t("meta.repoUrl")
     <meta name="description" content={t("meta.description")} />
     <meta name="keywords" content={t("meta.keywords")} />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content={t("meta.title")} />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={t("meta.description")} />
     <meta property="og:image" content={image.src} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={t("meta.url")} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={t("meta.title")} />
+    <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={t("meta.description")} />
     <meta name="twitter:image" content={image.src} />
-    <title>{t("meta.title")}</title>
+    <title>{title}</title>
     <link rel="canonical" href={t("meta.url")} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,8 +43,10 @@ const repoUrl = t("meta.repoUrl")
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300..700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <slot />
-    <footer>
+    <main class={className} id="siteContent">
+      <slot />
+    </main>
+    <footer id="siteFooter">
       <p>
         <span set:html={t("sections.footer.copyrightText", {
           author: t("meta.author"),

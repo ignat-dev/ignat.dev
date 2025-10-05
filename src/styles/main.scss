@@ -81,34 +81,3 @@ h6 {
 section {
   margin: 0;
 }
-
-footer {
-  border-top: 1px solid var(--pico-muted-border-color);
-  font-size: calc(0.675 * var(--pico-font-size));
-  margin: 0 calc(6 * var(--pico-block-spacing-horizontal));
-  padding: calc(4 * var(--pico-block-spacing-vertical)) 0 !important;
-  text-align: center;
-
-  > * {
-    color: var(--pico-muted-color);
-  }
-
-  > p > small {
-    color: rgb(from var(--pico-muted-color) r g b / 0.5);
-  }
-
-  @media (max-width: 800px) {
-    margin: 0 calc(4 * var(--pico-block-spacing-horizontal));
-  }
-
-  @media (max-width: 600px) {
-    margin: 0 calc(2 * var(--pico-block-spacing-horizontal));
-  }
-
-  @media (max-width: 440px) {
-    > p > span + span {
-      display: block;
-      margin-top: calc(1 * var(--pico-block-spacing-vertical));
-    }
-  }
-}
