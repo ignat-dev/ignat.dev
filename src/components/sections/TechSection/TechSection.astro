@@ -1,0 +1,34 @@
+---
+import { PageSection } from "@components/ui"
+import { useTranslations } from "@lib/i18n"
+import { getTechGroups } from "@utils/content"
+import { getTechImages } from "@utils/resources"
+
+import "./TechSection.scss"
+
+const t = await useTranslations(Astro.props.locale)
+const images = getTechImages()
+const technologies = await getTechGroups()
+---
+
+<PageSection
+  className="tech-section"
+  maxWidth="680px"
+  text={t("sections.technologies.text")}
+  title={t("sections.technologies.title")}
+>
+  <div class="technology-list">
+    {technologies.map(({ items, type }) => (
+      <p>{t(`sections.technologies.types.${type}`)}</p>
+      <ul>
+        {items.map(({ id, link, name }) => (
+          <li>
+            <a href={link} rel="noopener noreferrer" target="_blank" title={name}>
+              <div set:html={images[id]} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    ))}
+  </div>
+</PageSection>

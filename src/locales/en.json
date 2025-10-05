@@ -26,6 +26,17 @@
       "description": "With 20+ years of experience in frontend and backend development, I create user-friendly and scalable solutions.",
       "subtitle": "Full-Stack Software Engineer",
       "title": "Ignat Ignatov"
+    },
+    "technologies": {
+      "text": "With expertise in multiple programming languages, platforms, frameworks, and technologies, I can help you transform your ideas into tangible solutions.",
+      "title": "Technology Expertise",
+      "types": {
+        "ai": "AI/ML Technologies",
+        "backend": "Backend Platforms",
+        "cloud": "Cloud & DevOps",
+        "frontend": "Frontend Frameworks",
+        "fullstack": "Full-stack Frameworks"
+      }
     }
   }
 }

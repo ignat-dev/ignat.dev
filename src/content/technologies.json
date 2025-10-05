@@ -1,0 +1,107 @@
+[
+  {
+    "id": "angular",
+    "link": "https://angular.io/",
+    "name": "Angular",
+    "sort": 3,
+    "type": "frontend"
+  },
+  {
+    "id": "astro",
+    "link": "https://astro.build/",
+    "name": "Astro",
+    "sort": 2,
+    "type": "fullstack"
+  },
+  {
+    "id": "aws",
+    "link": "https://aws.amazon.com/",
+    "name": "Amazon Web Services",
+    "sort": 3,
+    "type": "cloud"
+  },
+  {
+    "id": "django",
+    "link": "https://www.djangoproject.com/",
+    "name": "Django",
+    "sort": 3,
+    "type": "fullstack"
+  },
+  {
+    "id": "dotnet",
+    "link": "https://dotnet.microsoft.com/",
+    "name": "Microsoft .NET Framework",
+    "sort": 2,
+    "type": "backend"
+  },
+  {
+    "id": "firebase",
+    "link": "https://firebase.google.com/",
+    "name": "Firebase",
+    "sort": 1,
+    "type": "cloud"
+  },
+  {
+    "id": "gcp",
+    "link": "https://cloud.google.com/",
+    "name": "Google Cloud Platform",
+    "sort": 2,
+    "type": "cloud"
+  },
+  {
+    "id": "java",
+    "link": "https://www.java.com/",
+    "name": "Java",
+    "sort": 3,
+    "type": "backend"
+  },
+  {
+    "id": "langchain",
+    "link": "https://langchain.com/",
+    "name": "LangChain",
+    "sort": 2,
+    "type": "ai"
+  },
+  {
+    "id": "nextjs",
+    "link": "https://nextjs.org/",
+    "name": "Next.js",
+    "sort": 1,
+    "type": "fullstack"
+  },
+  {
+    "id": "nodejs",
+    "link": "https://nodejs.org/",
+    "name": "Node.js",
+    "sort": 1,
+    "type": "backend"
+  },
+  {
+    "id": "openai",
+    "link": "https://chat.openai.com/",
+    "name": "OpenAI",
+    "sort": 1,
+    "type": "ai"
+  },
+  {
+    "id": "python",
+    "link": "https://www.python.org/",
+    "name": "Python",
+    "sort": 3,
+    "type": "ai"
+  },
+  {
+    "id": "react",
+    "link": "https://react.dev/",
+    "name": "React",
+    "sort": 1,
+    "type": "frontend"
+  },
+  {
+    "id": "vuejs",
+    "link": "https://vuejs.org/",
+    "name": "Vue.js",
+    "sort": 2,
+    "type": "frontend"
+  }
+]
