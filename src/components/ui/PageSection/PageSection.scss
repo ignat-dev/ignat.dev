@@ -10,12 +10,12 @@
   row-gap: var(--row-gap);
   text-align: var(--content-align, center);
 
-  &[data-align="left"] {
+  &[data-align="start"] {
     --underline-margin-left: 0;
     --underline-margin-right: auto;
   }
 
-  &[data-align="right"] {
+  &[data-align="end"] {
     --underline-margin-left: auto;
     --underline-margin-right: 0;
   }

@@ -23,12 +23,12 @@ const cvFileName = `CV - ${t("sections.hero.title")} - ${t("sections.hero.subtit
       <p>{t("sections.hero.description")}</p>
       <div class="hero-section__actions">
         <LinkButton
-          className="primary"
+          class="primary"
           link={`mailto:${t("meta.email")}`}
           text={t("actions.getInTouch")}
         />
         <LinkButton
-          className="contrast outline"
+          class="contrast outline"
           downloadAs={cvFileName}
           link={"/files/cv.pdf"}
           text={t("actions.downloadCV")}

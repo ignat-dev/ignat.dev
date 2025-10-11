@@ -1,17 +1,17 @@
 ---
 import { useTranslations } from "@lib/i18n"
+import type { ComponentProps } from "@types"
 
 import "@styles/main.scss"
 import "./MainLayout.scss"
 
 import image from "@assets/images/profile-photo.jpg"
 
-interface Props {
-  className?: string
+interface Props extends ComponentProps {
   title?: string
 }
 
-const { className, title: pageTitle } = Astro.props
+const { class: classList, id, theme, title: pageTitle } = Astro.props
 const t = await useTranslations(Astro.currentLocale)
 const repoUrl = t("meta.repoUrl")
 const title = pageTitle ? `${pageTitle} - ${t("meta.title")}` : t("meta.title")
@@ -42,8 +42,8 @@ const title = pageTitle ? `${pageTitle} - ${t("meta.title")}` : t("meta.title")
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300..700&display=swap" rel="stylesheet">
   </head>
-  <body>
-    <main class={className} id="siteContent">
+  <body class={classList} data-theme={theme} id={id}>
+    <main id="siteContent">
       <slot />
     </main>
     <footer id="siteFooter">

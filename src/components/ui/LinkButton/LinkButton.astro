@@ -1,23 +1,22 @@
 ---
-import type { LinkData } from "@types"
+import type { ComponentProps, LinkData } from "@types"
 import { getObfuscatedString } from "@utils/text"
 
 import "./LinkButton.scss"
 
-interface Props extends LinkData {
-  className?: string
+interface Props extends ComponentProps, LinkData {
   downloadAs?: string
   isInternal?: boolean
 }
 
-const { className, downloadAs, icon, isInternal, link, text } = Astro.props
+const { class: classList, downloadAs, icon, isInternal, link, text } = Astro.props
 const isProtected = link.startsWith("mailto:") || link.startsWith("/files/")
 const data = isProtected ? getObfuscatedString(link) : undefined
 const href = isProtected ? `#${text?.toLowerCase().replace(/\s+/g, "-") ?? ""}` : link
 ---
 
 <a
-  class:list={[ "ui-link-button", className ]}
+  class:list={[ "ui-link-button", classList ]}
   data-href={data}
   download={downloadAs}
   href={href}

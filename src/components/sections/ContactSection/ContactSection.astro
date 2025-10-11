@@ -9,10 +9,9 @@ const t = await useTranslations(Astro.currentLocale)
 ---
 
 <PageSection
-  align="left"
-  className="contact-section"
+  class="contact-section"
   text={t("sections.contact.text")}
   title={t("sections.contact.title")}
 >
-  <LinkList className="contact-links" items={contacts} />
+  <LinkList class="contact-links" items={contacts} />
 </PageSection>

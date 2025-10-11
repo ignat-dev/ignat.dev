@@ -1,20 +1,18 @@
 ---
-import type { NavItem } from "@types"
+import type { ComponentProps, NavItem } from "@types"
 
 import "./Navigation.scss"
 
-interface Props {
+interface Props extends ComponentProps {
   align?: "start" | "center" | "end"
-  className?: string
-  id?: string
   items: Array<NavItem>
 }
 
-const { align = "start", className, id, items } = Astro.props
+const { align = "start", class: classList, id, items, theme } = Astro.props
 const currentUrl = Astro.url.pathname
 ---
 
-<nav class:list={[ "ui-navigation", className ]} id={id}>
+<nav class:list={[ "ui-navigation", classList ]} data-theme={theme} id={id}>
   <ul style={{ "--content-align": align }}>
     {items.map(({ label, url }) => (
       <li class:list={{ "is-active": url === currentUrl }}>

@@ -1,45 +1,46 @@
 ---
+import type { ComponentProps } from "@types"
+
 import "./PageSection.scss"
 
-interface Props {
-  align?: "left" | "center" | "right"
-  className?: string
-  contentClassName?: string
-  footerClassName?: string
-  headerClassName?: string
+interface Props extends ComponentProps {
+  align?: "start" | "center" | "end"
+  contentClass?: string
+  footerClass?: string
+  headerClass?: string
   maxWidth?: string
   title?: string
   text?: string
-  theme?: "light" | "dark"
 }
 
 const {
-  align = "center",
-  className,
-  contentClassName,
-  footerClassName,
-  headerClassName,
+  align = "start",
+  class: classList,
+  contentClass,
+  footerClass,
+  headerClass,
+  id,
   maxWidth,
   title,
   text,
   theme,
 } = Astro.props
-const contentAlign = { left: "start", center: "center", right: "end" }[align]
 const hasHeader = Boolean(Astro.slots.header || Astro.slots.title || title)
 const hasFooter = Boolean(Astro.slots.footer)
 ---
 
 <section
-  class:list={[ "ui-page-section", className ]}
+  class:list={[ "ui-page-section", classList ]}
   data-align={align}
   data-theme={theme}
+  id={id}
   style={{
-    "--content-align": contentAlign,
+    "--content-align": align,
     "--max-width": maxWidth ?? undefined,
   }}
 >
   {hasHeader && (
-    <div class:list={[ "ui-page-section__header", headerClassName ]}>
+    <div class:list={[ "ui-page-section__header", headerClass ]}>
       {Astro.slots.header ? (
         <slot name="header" />
       ) : (
@@ -50,11 +51,11 @@ const hasFooter = Boolean(Astro.slots.footer)
       )}
     </div>
   )}
-  <div class:list={[ "ui-page-section__content", contentClassName ]}>
+  <div class:list={[ "ui-page-section__content", contentClass ]}>
     <slot />
   </div>
   {hasFooter && (
-    <div class:list={[ "ui-page-section__footer", footerClassName ]}>
+    <div class:list={[ "ui-page-section__footer", footerClass ]}>
       <slot name="footer" />
     </div>
   )}
