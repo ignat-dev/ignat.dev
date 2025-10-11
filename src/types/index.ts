@@ -1,2 +1,3 @@
-export * from "./LinkData"
-export * from "./TechGroup"
+export type { LinkData } from "./LinkData"
+export type { NavItem } from "./NavItem"
+export type { TechGroup } from "./TechGroup"

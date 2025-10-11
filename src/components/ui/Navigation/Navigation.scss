@@ -1,0 +1,83 @@
+.ui-navigation {
+  --item-padding-horizontal: var(--pico-nav-element-spacing-horizontal);
+  --item-padding-vertical: 0;
+  --link-margin-horizontal: calc(-1 * var(--pico-nav-link-spacing-horizontal));
+  --link-margin-vertical: calc(-1 * var(--pico-nav-link-spacing-vertical));
+  --link-padding-horizontal: var(--pico-nav-link-spacing-horizontal);
+  --link-padding-vertical: var(--pico-nav-link-spacing-vertical);
+
+  display: block;
+  position: relative;
+  z-index: 100;
+
+  > ul {
+    align-items: center;
+    display: flex;
+    justify-content: var(--content-align, start);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    > li {
+      padding: var(--item-padding-vertical) var(--item-padding-horizontal);
+
+      &.is-active {
+        > a {
+          color: var(--pico-contrast);
+
+          > span::after {
+            background-color: var(--pico-primary-border);
+          }
+        }
+      }
+
+      &:not(.is-active) {
+        > a:hover {
+          color: var(--pico-secondary-hover);
+
+          > span::after {
+            background-color: var(--pico-secondary-hover-border);
+          }
+        }
+      }
+
+      &.is-active > a,
+      & > a:hover {
+        > span::after {
+          transform: translateX(-50%) scaleX(1);
+          width: 100%;
+        }
+      }
+
+      > a {
+        color: var(--pico-secondary);
+        line-height: 1;
+        margin: var(--link-margin-vertical) var(--link-margin-horizontal);
+        padding: var(--link-padding-vertical) var(--link-padding-horizontal);
+        transition: color 0.2s ease-in-out;
+
+        > span {
+          display: inline-block;
+          position: relative;
+          width: 100%;
+
+          &::after {
+            background-color: transparent;
+            border-radius: 2px;
+            content: "";
+            display: block;
+            height: 2px;
+            left: 50%;
+            margin-top: calc(0.25 * var(--pico-block-spacing-vertical));
+            position: absolute;
+            transform-origin: center;
+            transition: 0.28s ease-in-out;
+            transition-property: background-color, transform, width;
+            width: 0;
+          }
+        }
+      }
+    }
+  }
+}

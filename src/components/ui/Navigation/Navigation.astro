@@ -1,0 +1,27 @@
+---
+import type { NavItem } from "@types"
+
+import "./Navigation.scss"
+
+interface Props {
+  align?: "start" | "center" | "end"
+  className?: string
+  id?: string
+  items: Array<NavItem>
+}
+
+const { align = "start", className, id, items } = Astro.props
+const currentUrl = Astro.url.pathname
+---
+
+<nav class:list={[ "ui-navigation", className ]} id={id}>
+  <ul style={{ "--content-align": align }}>
+    {items.map(({ label, url }) => (
+      <li class:list={{ "is-active": url === currentUrl }}>
+        <a href={url} aria-current={url === currentUrl || undefined}>
+          <span>{label}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
