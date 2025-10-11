@@ -4,14 +4,29 @@ import "./PageSection.scss"
 interface Props {
   align?: "left" | "center" | "right"
   className?: string
+  contentClassName?: string
+  footerClassName?: string
+  headerClassName?: string
   maxWidth?: string
-  title: string
+  title?: string
   text?: string
   theme?: "light" | "dark"
 }
 
-const { align = "center", className, maxWidth, title, text, theme } = Astro.props
+const {
+  align = "center",
+  className,
+  contentClassName,
+  footerClassName,
+  headerClassName,
+  maxWidth,
+  title,
+  text,
+  theme,
+} = Astro.props
 const contentAlign = { left: "start", center: "center", right: "end" }[align]
+const hasHeader = Boolean(Astro.slots.header || Astro.slots.title || title)
+const hasFooter = Boolean(Astro.slots.footer)
 ---
 
 <section
@@ -23,13 +38,24 @@ const contentAlign = { left: "start", center: "center", right: "end" }[align]
     "--max-width": maxWidth ?? undefined,
   }}
 >
-  <div class="ui-page-section__header">
-    <hgroup>
-      <h2>{title}</h2>
-      {Astro.slots.text ? <slot name="text" /> : (text && <p>{text}</p>)}
-    </hgroup>
-  </div>
-  <div class="ui-page-section__content">
+  {hasHeader && (
+    <div class:list={[ "ui-page-section__header", headerClassName ]}>
+      {Astro.slots.header ? (
+        <slot name="header" />
+      ) : (
+        <hgroup>
+          {Astro.slots.title ? <slot name="title" /> : (title && <h2>{title}</h2>)}
+          {Astro.slots.text ? <slot name="text" /> : (text && <p>{text}</p>)}
+        </hgroup>
+      )}
+    </div>
+  )}
+  <div class:list={[ "ui-page-section__content", contentClassName ]}>
     <slot />
   </div>
+  {hasFooter && (
+    <div class:list={[ "ui-page-section__footer", footerClassName ]}>
+      <slot name="footer" />
+    </div>
+  )}
 </section>
