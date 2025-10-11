@@ -1,9 +1,9 @@
 .hero-section {
   --padding-horizontal: calc(6 * var(--pico-block-spacing-horizontal));
-  --padding-vertical: calc(6 * var(--pico-block-spacing-vertical));
+  --padding-vertical: calc(2 * var(--pico-block-spacing-vertical));
 
   display: flex;
-  min-height: min(100vh, 800px);
+  min-height: min(100vh, 680px);
   padding: var(--padding-vertical) var(--padding-horizontal);
   position: relative;
 

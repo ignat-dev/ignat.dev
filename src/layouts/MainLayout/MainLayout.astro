@@ -1,6 +1,9 @@
 ---
+import { Navigation } from "@components/ui"
+import { routes } from "@config/routes"
 import { useTranslations } from "@lib/i18n"
 import type { ComponentProps } from "@types"
+import { convertRouteMapToNavItems } from "@utils/routing"
 
 import "@styles/main.scss"
 import "./MainLayout.scss"
@@ -13,6 +16,7 @@ interface Props extends ComponentProps {
 
 const { class: classList, id, theme, title: pageTitle } = Astro.props
 const t = await useTranslations(Astro.currentLocale)
+const navItems = convertRouteMapToNavItems(routes, (x) => t(`navigation.${x}`))
 const repoUrl = t("meta.repoUrl")
 const title = pageTitle ? `${pageTitle} - ${t("meta.title")}` : t("meta.title")
 ---
@@ -43,7 +47,11 @@ const title = pageTitle ? `${pageTitle} - ${t("meta.title")}` : t("meta.title")
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300..700&display=swap" rel="stylesheet">
   </head>
   <body class={classList} data-theme={theme} id={id}>
+    <header id="siteHeader">
+      <Navigation align="center" id="siteNavigation" items={navItems} />
+    </header>
     <main id="siteContent">
+      <div id="scrollSentinel" />
       <slot />
     </main>
     <footer id="siteFooter">
@@ -62,5 +70,17 @@ const title = pageTitle ? `${pageTitle} - ${t("meta.title")}` : t("meta.title")
         </small>
       </p>
     </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.body.style.setProperty(
+          "--site-navigation-height",
+          `${document.querySelector("#siteHeader")!.clientHeight}px`
+        )
+
+        new IntersectionObserver(([ entry ]: Array<IntersectionObserverEntry>) => {
+          document.body.classList.toggle("is-scrolled", !entry.isIntersecting)
+        }).observe(document.querySelector("#scrollSentinel")!)
+      });
+    </script>
   </body>
 </html>

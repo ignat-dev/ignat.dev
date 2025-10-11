@@ -7,7 +7,7 @@
     "components/dropdown": false,
     "components/loading": true,
     "components/modal": false,
-    "components/nav": false,
+    "components/nav": true,
     "components/progress": false,
     "components/tooltip": false,
     "content/button": true,
@@ -37,13 +37,23 @@
   $theme-color: "violet",
 );
 
+::root {
+  --site-navigation-height: 64px;
+}
+
 html,
 body {
   background: var(--pico-contrast-inverse);
-  height: 100%;
   margin: 0;
   min-width: 360px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
   width: 100%;
+
+  @supports (overflow: overlay) {
+    overflow-y: overlay;
+  }
 }
 
 html {

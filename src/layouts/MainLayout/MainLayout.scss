@@ -1,7 +1,65 @@
+#siteHeader {
+  align-items: center;
+  background-color: transparent;
+  display: flex;
+  gap: calc(0.5 * var(--pico-block-spacing-horizontal));
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: none;
+  transition: transform 0.2s ease-out;
+  width: 100%;
+  will-change: transform;
+  z-index: 1000;
+
+  body.is-scrolled > & {
+    background-color: var(--pico-contrast-inverse);
+    box-shadow: 0 0 25px 5px rgba(from var(--pico-contrast-inverse) r g b / 0.5);
+    transform: translateY(-25%);
+
+    > nav {
+      border-color: var(--pico-muted-border-color);
+
+      > ul {
+        padding: 0;
+        transform: scale(0.75);
+        transform-origin: center bottom;
+      }
+    }
+  }
+}
+
+#siteNavigation {
+  --item-padding-horizontal: 0;
+  --item-padding-vertical: 0;
+  --link-margin-horizontal: 0;
+  --link-margin-vertical: 0;
+  --link-padding-horizontal: calc(2 * var(--pico-nav-link-spacing-horizontal));
+  --link-padding-vertical: calc(1.5 * var(--pico-nav-link-spacing-vertical));
+
+  border-bottom: 1px solid transparent;
+  flex: 1;
+  font-family: "Oxanium", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+
+  > ul {
+    padding: calc(0.5 * var(--pico-block-spacing-vertical)) 0;
+    transform: none;
+    transition: 0.2s ease-out;
+    transition-property: padding, transform;
+    will-change: transform;
+  }
+}
+
+#siteContent {
+  padding-top: var(--site-navigation-height);
+}
+
 #siteFooter {
   border-top: 1px solid var(--pico-muted-border-color);
   font-size: calc(0.675 * var(--pico-font-size));
-  margin: 0 calc(6 * var(--pico-block-spacing-horizontal));
   padding: calc(4 * var(--pico-block-spacing-vertical)) 0 !important;
   text-align: center;
 
@@ -13,18 +71,23 @@
     color: rgb(from var(--pico-muted-color) r g b / 0.5);
   }
 
+  @media (max-width: 440px) {
+    > p > span + span {
+      display: block;
+      margin-top: calc(1 * var(--pico-block-spacing-vertical));
+    }
+  }
+}
+
+#siteNavigation,
+#siteFooter {
+  margin: 0 calc(6 * var(--pico-block-spacing-horizontal));
+
   @media (max-width: 800px) {
     margin: 0 calc(4 * var(--pico-block-spacing-horizontal));
   }
 
   @media (max-width: 600px) {
     margin: 0 calc(2 * var(--pico-block-spacing-horizontal));
-  }
-
-  @media (max-width: 440px) {
-    > p > span + span {
-      display: block;
-      margin-top: calc(1 * var(--pico-block-spacing-vertical));
-    }
   }
 }

@@ -12,6 +12,11 @@
     "title": "ignat.dev",
     "url": "https://ignat.dev"
   },
+  "navigation": {
+    "about": "About",
+    "home": "Home",
+    "services": "Services"
+  },
   "sections": {
     "contact": {
       "text": "Feel free to reach out for collaborations, inquiries, or just to say hello!",
