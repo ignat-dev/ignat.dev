@@ -5,15 +5,15 @@
 
   "scripts": {
     "astro": "astro",
-    "astro:check": "astro check",
     "build": "astro build",
-    "check": "npm run typecheck && npm run astro:check && npm run lint",
+    "check": "tsc --noEmit && astro check",
     "deploy": "npm run build && npx firebase deploy",
     "dev": "astro dev",
     "lint": "eslint . --ext .astro,.js,.ts",
-    "lint:fix": "npm run lint -- --fix",
-    "preview": "astro preview",
-    "typecheck": "tsc --noEmit"
+    "lint-fix": "npm run lint -- --fix",
+    "lint-staged": "lint-staged",
+    "prepare": "git config core.hooksPath .githooks && chmod +x .githooks/* || true",
+    "preview": "astro preview"
   },
 
   "dependencies": {
@@ -29,11 +29,15 @@
     "@typescript-eslint/parser": "^8",
     "eslint": "^9",
     "eslint-plugin-astro": "^1",
+    "lint-staged": "^16",
     "sass-embedded": "^1",
     "typescript": "^5"
   },
   "engines": {
     "node": ">=20.10.0",
     "npm": ">=10.0.0"
+  },
+  "lint-staged": {
+    "*.{astro,js,ts,tsx}": "eslint"
   }
 }
