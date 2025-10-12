@@ -14,5 +14,5 @@
     }
   },
   "exclude": ["dist", "node_modules"],
-  "include": [".astro/types.d.ts", "**/*"]
+  "include": [".astro/types.d.ts", "src/**/*", "env.d.ts"]
 }
